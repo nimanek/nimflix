@@ -6,13 +6,13 @@ import MovieDetail from "./components/MovieDetail";
 function App() {
     return (
         <>
-            <div>
                 <Navbar />
+            <main>
                 <Routes>
                     <Route path="/" element={<MovieList />} />
                     <Route path="/movie" element={<MovieDetail />} />
                 </Routes>
-            </div>
+            </main>
         </>
     );
 }

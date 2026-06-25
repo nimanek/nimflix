@@ -1,23 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieCard = () => {
+const MovieCard = ({movie}) => {
   return (
     <Link to={'/movie'}>
-      <div className="max-w-54 max-h-fit mt-6 rounded-md shadow-md cursor-pointer overflow-hidden">
+      <div className="">
                     <img
-                        className="w-full"
-                        src="https://placehold.co/200x250"
-                        alt=""
+                        className="w-full h-70 object-cover hover:object-bottom-right transition-all"
+                        src={movie.Poster !== "N/A" ? movie.Poster : 'https://placehold.co/200x250?text=No+Poster'}
+                        alt={movie.Title}
                     />
                     <div className="p-3">
-                        <h2 className="font-semibold text-xl">title</h2>
-                        <p className="line-clamp-3 font-light">
+                        <h2 className="font-semibold text-md line-clamp-2">{movie.Title}</h2>
+                        {/* <p className="line-clamp-3 font-light">
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Deserunt, ea. Ipsum nemo, neque quae aut
                             facere odit officia est provident sequi expedita
                             repudiandae explicabo odio maxime sed...
-                        </p>
+                        </p> */}
                     </div>
                 </div>
     </Link>
