@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MovieCard = () => {
   return (
-    <div>
+    <Link to={'/movie'}>
       <div className="max-w-54 max-h-fit mt-6 rounded-md shadow-md cursor-pointer overflow-hidden">
                     <img
                         className="w-full"
@@ -19,7 +20,7 @@ const MovieCard = () => {
                         </p>
                     </div>
                 </div>
-    </div>
+    </Link>
   )
 }
 

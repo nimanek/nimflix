@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Navbar = () => {
     return (
         <>
@@ -11,9 +13,9 @@ export const Navbar = () => {
                         />
                     </div>
                     <div className="flex gap-8">
-                        <li>Home</li>
-                        <li>Latest</li>
-                        <li>Popular</li>
+                        <Link to="/">Home</Link>
+                        <Link to="/latest">Latest</Link>
+                        <Link to="/popular">Popular</Link>
                     </div>
                 </ul>
             </div>
