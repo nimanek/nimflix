@@ -6,13 +6,6 @@ const MovieList = () => {
         <>
             <main className="flex flex-wrap gap-6">
                 <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
             </main>
         </>
     );
