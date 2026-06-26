@@ -17,7 +17,7 @@ const MovieList = () => {
 
     return (
         <>
-                {isLoading ? (<div className="fixed inset-0 flex flex-col justify-center items-center z-50"><GridLoader color="#FF6F61" margin={4} /></div>)
+                {isLoading ? (<div className="fixed inset-0 flex flex-col justify-center items-center z-50"><GridLoader color="#673AB7" margin={4} /></div>)
                 :(<main className="flex flex-wrap gap-6">
                 {movies.map((movie) => (
                     <ul

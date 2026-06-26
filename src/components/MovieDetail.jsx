@@ -19,10 +19,10 @@ const MovieDetail = () => {
     return (
         <>
             <main>
-                {isLoading ? (<div className="fixed inset-0 flex flex-col justify-center items-center z-50"><GridLoader color="#FF6F61"/></div>):(<div className="flex gap-26 mt-6">
+                {isLoading ? (<div className="fixed inset-0 flex flex-col justify-center items-center z-50"><GridLoader color="#673AB7"/></div>):(<div className="flex gap-26 mt-6">
                     {/* Left Content */}
-                    <div className="relative w-fit bg-red-300 rounded">
-                        <span className="absolute top-2 right-1 rounded-full bg-black/80 px-2 py-1 text-white">
+                    <div className="relative w-fit bg-[#FFEB3B] rounded">
+                        <span className="absolute top-2 right-1 rounded-full bg-[#673AB7]/80 px-2 py-1 text-white">
                             {currentMovie.Runtime}
                         </span>
                         <img
