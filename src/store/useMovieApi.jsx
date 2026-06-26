@@ -20,5 +20,22 @@ export const useMovieStore = create((set)=>({
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})
         }
+    },
+
+    fetchMovieById: async(imdbID)=>{
+        set({isLoading: true});
+        try{
+            const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&i=${imdbID.imdbID}`);
+            const data = await response.json()
+            console.log(data)
+
+            if(data.Response === "True"){
+                set({movies: data, isLoading: false})
+            }else{
+                set({movies: [], error: 'No Movie Found', isLoading: false})
+            }
+        }catch(err){
+            set({error:'faild to connect to server...', isLoading: false})
+        }
     }
 }))
