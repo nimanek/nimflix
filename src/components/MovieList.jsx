@@ -25,7 +25,7 @@ const MovieList = () => {
                 <main className="flex flex-wrap gap-6">
                     {movies.map((movie) => (
                         <ul
-                            className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden"
+                            className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden bg-white"
                             key={movie.imdbID}
                         >
                             <Link to={`/movie/${movie.imdbID}`}>
