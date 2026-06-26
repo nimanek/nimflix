@@ -2,25 +2,31 @@ import React, { useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { useMovieStore } from "../store/useMovieApi";
 import { Link, useParams } from "react-router-dom";
+import { GridLoader } from "react-spinners";
 
 const MovieList = () => {
-    const movies = useMovieStore((state)=> state.movies)
-    const isLoading = useMovieStore((state)=> state.isLoading)
-    const error = useMovieStore((state)=> state.error)
+    const movies = useMovieStore((state) => state.movies);
+    const isLoading = useMovieStore((state) => state.isLoading);
+    const error = useMovieStore((state) => state.error);
 
-    const fetchLatestMovies = useMovieStore((state)=> state.fetchLatestMovies)
+    const fetchLatestMovies = useMovieStore((state) => state.fetchLatestMovies);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchLatestMovies();
-    },[]);
+    }, []);
 
     return (
         <>
             <main className="flex flex-wrap gap-6">
-                {isLoading && <p>LOADING.............</p>}
-                {movies.map((movie)=>(
-                    <ul className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden" key={movie.imdbID}>
-                        <Link to={`/movie/${movie.imdbID}`}><MovieCard movie={movie} /></Link>
+                {isLoading && (<div className="fixed inset-0 flex flex-col justify-center items-center z-50"><GridLoader color="#FF6F61" margin={4} /></div>)}
+                {movies.map((movie) => (
+                    <ul
+                        className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden"
+                        key={movie.imdbID}
+                    >
+                        <Link to={`/movie/${movie.imdbID}`}>
+                            <MovieCard movie={movie} />
+                        </Link>
                     </ul>
                 ))}
             </main>
