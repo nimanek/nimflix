@@ -35,6 +35,7 @@ const MovieList = () => {
                     ))}
                 </main>
             )}
+            {error && <div className="fixed inset-0 flex flex-col justify-center items-center z-50">No Movies Found😭</div>}
         </>
     );
 };

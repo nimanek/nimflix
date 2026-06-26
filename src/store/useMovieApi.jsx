@@ -6,7 +6,7 @@ export const useMovieStore = create((set)=>({
     searchedMovies:[],
     currentMovie: [],
     isLoading: false,
-    error: '',
+    error: false,
 
     fetchLatestMovies: async ()=>{
         set({isLoading: true});
@@ -15,9 +15,9 @@ export const useMovieStore = create((set)=>({
             const data = await response.json()
 
             if(data.Response === "True"){
-                set({movies: data.Search, isLoading: false})
+                set({movies: data.Search, isLoading: false,error: false})
             }else{
-                set({movies: [], error: 'No Movie Found', isLoading: false})
+                set({movies: [], error: true, isLoading: false})
             }
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})
@@ -25,15 +25,15 @@ export const useMovieStore = create((set)=>({
     },
 
     fetchMovieById: async(imdbID)=>{
-        set({isLoading: true, error:'', currentMovie:[]});
+        set({isLoading: true, error:false, currentMovie:[]});
         try{
             const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&i=${imdbID.imdbID}`);
             const data = await response.json()
 
             if(data.Response === "True"){
-                set({currentMovie: data, isLoading: false})
+                set({currentMovie: data, isLoading: false,error: false})
             }else{
-                set({ error: 'No Movie Found', isLoading: false})
+                set({ error: true, isLoading: false})
             }
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})
@@ -46,15 +46,15 @@ export const useMovieStore = create((set)=>({
             state.fetchLatestMovies();
             return;
         };
-        set({isLoading: true, error:'', movies:[]});
+        set({isLoading: true, error: false, movies:[]});
         try{
             const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&s=${event}`);
             const data = await response.json()
 
             if(data.Response === "True"){
-                set({movies: data.Search, isLoading: false})
+                set({movies: data.Search, isLoading: false, error: false})
             }else{
-                set({ error: 'No Movie Found', isLoading: false})
+                set({ error: true, isLoading: false})
             }
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})

@@ -14,7 +14,7 @@ const MovieDetail = () => {
     useEffect(() => {
         fetchMovieById(param);
     }, []);
-    
+
 
     return (
         <>
@@ -42,6 +42,10 @@ const MovieDetail = () => {
                         </h1>
                         <p>{currentMovie.Plot}</p>
                         <span>Rate: {currentMovie.imdbRating}</span>
+                        {Array.from({length:5},(_, index)=>{
+                            const ratingStars = Math.round(Number(currentMovie.imdbRating / 2));
+                            return index < ratingStars ? "🟡" : "⚪"
+                        })}
                         <div>
                             <p className="font-semibold">
                                 Released:{" "}
