@@ -17,7 +17,7 @@ const MovieList = () => {
     return (
         <>
             <main className="flex flex-wrap gap-6">
-                {/* {isLoading && <p>LOADING.............</p>} */}
+                {isLoading && <p>LOADING.............</p>}
                 {movies.map((movie)=>(
                     <ul className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden" key={movie.imdbID}>
                         <Link to={`/movie/${movie.imdbID}`}><MovieCard movie={movie} /></Link>

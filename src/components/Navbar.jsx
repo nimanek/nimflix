@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
     return (
         <>
-            <div className="bg-red-400 py-4 w-full">
+            <div className="bg-[#DAA520] py-4 w-full">
                 <ul className="flex justify-around">
                     <div>
                         <input

@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 export const useMovieStore = create((set)=>({
     movies: [],
+    currentMovie: [],
     isLoading: false,
     error: '',
 
@@ -23,16 +24,16 @@ export const useMovieStore = create((set)=>({
     },
 
     fetchMovieById: async(imdbID)=>{
-        set({isLoading: true});
+        set({isLoading: true, error:'', currentMovie:[]});
         try{
             const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&i=${imdbID.imdbID}`);
             const data = await response.json()
             console.log(data)
 
             if(data.Response === "True"){
-                set({movies: data, isLoading: false})
+                set({currentMovie: data, isLoading: false})
             }else{
-                set({movies: [], error: 'No Movie Found', isLoading: false})
+                set({ error: 'No Movie Found', isLoading: false})
             }
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})
