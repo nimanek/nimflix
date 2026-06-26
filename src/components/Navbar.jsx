@@ -22,12 +22,19 @@ export const Navbar = () => {
 
     return (
         <>
-            <div className="bg-[#d0a842] py-4 w-full font-light">
+            <div className="bg-[#d0a842] w-full font-light h-22">
                 <ul className="flex justify-around items-center">
+                    <Link to={'/'}>
+                        <img
+                            src="/src/assets/high-resolution-color-logo.png"
+                            alt="Home"
+                            className="w-26 h-26"
+                        />
+                    </Link>
                     <div>
                         <input
                             type="text"
-                            className="bodrer border-2 p-2 outline-none rounded"
+                            className="bodrer border p-2 outline-none rounded"
                             placeholder="search..."
                             // onChange={(e)=>fetchMovieBySearch(e.target.value)}
                             onChange={handleInputChange}
@@ -36,12 +43,28 @@ export const Navbar = () => {
                     <div className="flex gap-8">
                         <NavLink
                             to="/"
-                            className={({ isActive })=>isActive ? "text-[#5b22bd]" : ""}
+                            className={({ isActive }) =>
+                                isActive ? "text-[#5b22bd]" : ""
+                            }
                         >
                             Home
                         </NavLink>
-                        <NavLink to="/latest" className={({ isActive })=>isActive ? "text-[#5b22bd]" : ""}>Latest</NavLink>
-                        <NavLink to="/popular" className={({ isActive })=>isActive ? "text-[#5b22bd]" : ""}>Popular</NavLink>
+                        <NavLink
+                            to="/latest"
+                            className={({ isActive }) =>
+                                isActive ? "text-[#5b22bd]" : ""
+                            }
+                        >
+                            Latest
+                        </NavLink>
+                        <NavLink
+                            to="/popular"
+                            className={({ isActive }) =>
+                                isActive ? "text-[#5b22bd]" : ""
+                            }
+                        >
+                            Popular
+                        </NavLink>
                     </div>
                 </ul>
             </div>
