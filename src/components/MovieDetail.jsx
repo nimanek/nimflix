@@ -14,7 +14,7 @@ const MovieDetail = () => {
     useEffect(() => {
         fetchMovieById(param);
     }, []);
-    console.log(currentMovie);
+    
 
     return (
         <>
