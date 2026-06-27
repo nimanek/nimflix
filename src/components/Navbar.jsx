@@ -53,7 +53,7 @@ export const Navbar = () => {
                 <ul className="flex justify-around items-center">
                     <Link onClick={handleHomeClick} to={'/'}>
                         <img
-                            src="/src/assets/high-resolution-color-logo.jpg"
+                            src="/public/high-resolution-color-logo.jpg"
                             alt="Home"
                             className="w-26 h-26"
                         />
