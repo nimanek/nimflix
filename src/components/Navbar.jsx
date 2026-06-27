@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useMovieStore } from "../store/useMovieApi";
 import { useEffect, useRef, useState } from "react";
+// import Logo from '../../public/'
 
 export const Navbar = () => {
     const fetchLatestMovies = useMovieStore((state)=> state.fetchLatestMovies)
@@ -53,7 +54,7 @@ export const Navbar = () => {
                 <ul className="flex justify-around items-center">
                     <Link onClick={handleHomeClick} to={'/'}>
                         <img
-                            src="/public/high-resolution-color-logo.jpg"
+                            src="../../public/high-resolution-color-logo.jpg"
                             alt="Home"
                             className="w-26 h-26"
                         />
