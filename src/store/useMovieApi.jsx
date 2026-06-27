@@ -59,5 +59,27 @@ export const useMovieStore = create((set)=>({
         }catch(err){
             set({error:'faild to connect to server...', isLoading: false})
         }
+    },
+
+    fetchMovieByYear: async(year)=>{
+        if(!year || year === ''){
+            const state = useMovieStore.getState();
+            state.fetchLatestMovies();
+            return;
+        };
+        set({isLoading: true, error: false, movies:[]});
+        try{
+            const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&s=movie&y=${year}`);
+            const data = await response.json()
+            // console.log(year)
+
+            if(data.Response === "True"){
+                set({movies: data.Search, isLoading: false, error: false})
+            }else{
+                set({ error: true, isLoading: false})
+            }
+        }catch(err){
+            set({error:'faild to connect to server...', isLoading: false})
+        }
     }
 }))

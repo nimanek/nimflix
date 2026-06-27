@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import { useMovieStore } from "../store/useMovieApi";
 import { Link, useParams } from "react-router-dom";
 import { GridLoader } from "react-spinners";
+import Filter from "./Filter";
 
 const MovieList = () => {
     const movies = useMovieStore((state) => state.movies);
@@ -22,6 +23,10 @@ const MovieList = () => {
                     <GridLoader color="#673AB7" margin={4} />
                 </div>
             ) : (
+                <>
+                <div>
+                    <Filter />
+                </div>
                 <main className="flex flex-wrap gap-6">
                     {movies.map((movie) => (
                         <ul
@@ -34,6 +39,7 @@ const MovieList = () => {
                         </ul>
                     ))}
                 </main>
+            </>
             )}
             {error && <div className="fixed inset-0 flex flex-col justify-center items-center z-50">No Movies Found😭</div>}
         </>

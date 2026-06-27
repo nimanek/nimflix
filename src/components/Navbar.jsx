@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useMovieStore } from "../store/useMovieApi";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export const Navbar = () => {
     const fetchMovieBySearch = useMovieStore(
