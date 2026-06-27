@@ -10,17 +10,21 @@ const MovieList = () => {
     const isLoading = useMovieStore((state) => state.isLoading);
     const error = useMovieStore((state) => state.error);
 
-    const fetchMovieBySearch = useMovieStore((state)=> state.fetchMovieBySearch)
+    const fetchMovieBySearch = useMovieStore((state)=> state.fetchMovieBySearch);
     const fetchLatestMovies = useMovieStore((state) => state.fetchLatestMovies);
+    const fetchMovieByYear = useMovieStore((state)=> state.fetchMovieByYear)
 
     useEffect(() => {
-
         const savedSearch = localStorage.getItem('inputSearch');
+        const savedYear = localStorage.getItem('selectedYear');
+
 
         if(savedSearch && savedSearch.trim() !== ''){
-            console.log('old search result founded')
             fetchMovieBySearch(savedSearch)
-        } else{
+        }else if(savedYear && savedYear.trim() !== ''){
+            fetchMovieByYear(savedYear)
+        } 
+        else{
             fetchLatestMovies();
         }
     }, []);

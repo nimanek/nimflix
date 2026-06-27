@@ -14,8 +14,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MovieList />} />
                     <Route path="/:imdbID" element={<MovieDetail />} />
-                    {/* <Route path="/latest" element={<Latest />} />
-                    <Route path="/popular" element={<Popular />} /> */}
+                    <Route path="/latest" element={<Latest />} />
+                    <Route path="/popular" element={<Popular />} />
                 </Routes>
             </main>
         </>

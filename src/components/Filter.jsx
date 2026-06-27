@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMovieStore } from "../store/useMovieApi";
 
 const Filter = () => {
-  const [selectedYear, setSelectedYear] = useState('')
+  const [selectedYear, setSelectedYear] = useState(()=>{
+    localStorage.getItem('selectedYear') || '';
+  })
   const fetchMovieByYear = useMovieStore((state) => state.fetchMovieByYear);
   const fetchLatestMovies = useMovieStore((state) => state.fetchLatestMovies);
 
 
 
+  useEffect(()=>{
+    const savedYear = localStorage.getItem('selectedYear') || '';
+    setSelectedYear(savedYear)
+  },[fetchMovieByYear])
 
     const handleYearChange = (e)=>{
       const year = e.target.value;
       setSelectedYear(year);
 
       if(year === ''){
+        localStorage.removeItem('selectedYear')
         fetchLatestMovies()
       }else{
+        localStorage.setItem('selectedYear', year)
         fetchMovieByYear(year);
       }
     }
