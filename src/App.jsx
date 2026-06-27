@@ -3,6 +3,8 @@ import MovieList from "./components/MovieList";
 import { Navbar } from "./components/Navbar";
 import MovieDetail from "./components/MovieDetail";
 import Filter from "./components/Filter";
+import Latest from "./pages/Latest";
+import Popular from "./pages/Popular";
 
 function App() {
     return (
@@ -10,9 +12,10 @@ function App() {
                 <Navbar />
             <main>
                 <Routes>
-                    {/* <Route element={<Filter />} /> */}
                     <Route path="/" element={<MovieList />} />
-                    <Route path="/movie/:imdbID" element={<MovieDetail />} />
+                    <Route path="/:imdbID" element={<MovieDetail />} />
+                    {/* <Route path="/latest" element={<Latest />} />
+                    <Route path="/popular" element={<Popular />} /> */}
                 </Routes>
             </main>
         </>

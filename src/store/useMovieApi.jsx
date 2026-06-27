@@ -42,6 +42,8 @@ export const useMovieStore = create((set)=>({
 
     fetchMovieBySearch: async(event)=>{
         if(!event || event.trim() === ''){
+            // localStorage.setItem('inputSearch','')
+
             const state = useMovieStore.getState();
             state.fetchLatestMovies();
             // return;

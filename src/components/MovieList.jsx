@@ -10,10 +10,17 @@ const MovieList = () => {
     const isLoading = useMovieStore((state) => state.isLoading);
     const error = useMovieStore((state) => state.error);
 
+    const fetchMovieBySearch = useMovieStore((state)=> state.fetchMovieBySearch)
     const fetchLatestMovies = useMovieStore((state) => state.fetchLatestMovies);
 
     useEffect(() => {
-        if(movies.length === 0){
+
+        const savedSearch = localStorage.getItem('inputSearch');
+
+        if(savedSearch && savedSearch.trim() !== ''){
+            console.log('old search result founded')
+            fetchMovieBySearch(savedSearch)
+        } else{
             fetchLatestMovies();
         }
     }, []);
@@ -35,7 +42,7 @@ const MovieList = () => {
                             className="mt-6 max-h-full w-54 h-100 rounded-md shadow-md cursor-pointer overflow-hidden bg-white"
                             key={movie.imdbID}
                         >
-                            <Link to={`/movie/${movie.imdbID}`}>
+                            <Link to={`/${movie.imdbID}`}>
                                 <MovieCard movie={movie} />
                             </Link>
                         </ul>
@@ -43,7 +50,7 @@ const MovieList = () => {
                 </main>
             </>
             )}
-            {error && <div className="fixed inset-0 flex flex-col justify-center items-center z-50">No Movies Found😭</div>}
+            {/* {error && <div className="fixed inset-0 flex flex-col justify-center items-center z-50">No Movies Found😭</div>} */}
         </>
     );
 };
