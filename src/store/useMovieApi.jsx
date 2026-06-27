@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 export const useMovieStore = create((set)=>({
     movies: [],
-    searchedMovies:[],
+    searchedMovies:'',
     currentMovie: [],
     isLoading: false,
     error: false,
@@ -44,15 +44,15 @@ export const useMovieStore = create((set)=>({
         if(!event || event.trim() === ''){
             const state = useMovieStore.getState();
             state.fetchLatestMovies();
-            return;
+            // return;
         };
-        set({isLoading: true, error: false, movies:[]});
+        set({isLoading: true, error: false, movies:[], searchedMovies: event});
         try{
             const response = await fetch(`https://www.omdbapi.com/?apikey=81078cc1&s=${event}`);
             const data = await response.json()
 
             if(data.Response === "True"){
-                set({movies: data.Search, isLoading: false, error: false})
+                set({movies: data.Search, isLoading: false, error: false, searchedMovies: event})
             }else{
                 set({ error: true, isLoading: false})
             }

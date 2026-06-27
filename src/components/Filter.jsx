@@ -23,7 +23,7 @@ const Filter = () => {
     return (
         <>
             <main>
-                <select value={selectedYear} onChange={handleYearChange}>
+                <select className="px-2 py-1 border rounded mt-4" value={selectedYear} onChange={handleYearChange}>
                     <option value="">year</option>
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
@@ -44,12 +44,6 @@ const Filter = () => {
                     <option value="2010">2010</option>
                     <option value="2009">2009</option>
                 </select>
-
-                {/* <select name="" id="">
-                  <option value="banana">b</option>
-                  <option value="apple">a</option>
-                  <option value="orange">o</option>
-                </select> */}
             </main>
         </>
     );

@@ -13,7 +13,9 @@ const MovieList = () => {
     const fetchLatestMovies = useMovieStore((state) => state.fetchLatestMovies);
 
     useEffect(() => {
-        fetchLatestMovies();
+        if(movies.length === 0){
+            fetchLatestMovies();
+        }
     }, []);
 
     return (

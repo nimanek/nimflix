@@ -1,24 +1,27 @@
 import { Link, NavLink } from "react-router-dom";
 import { useMovieStore } from "../store/useMovieApi";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Navbar = () => {
-    const fetchMovieBySearch = useMovieStore(
-        (state) => state.fetchMovieBySearch,
-    );
+    const searchedMovies = useMovieStore((state)=>state.searchedMovies)
+    const fetchMovieBySearch = useMovieStore((state) => state.fetchMovieBySearch);
+    const [localInput, setLocalInput] = useState(searchedMovies)
 
-    // here we make a bit delay that we get server response first and not an error(without useing this, if we would type fast, movies would show but error too)
-    const timeoutRef = useRef(null);
-    const handleInputChange = (e) => {
-        const value = e.target.value;
 
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
-        }
-        timeoutRef.current = setTimeout(() => {
-            fetchMovieBySearch(value);
-        }, 100);
-    };
+    useEffect(()=>{
+        setLocalInput(searchedMovies)
+    },[searchedMovies]);
+
+    // debouncing 
+    useEffect(()=>{
+        const delayDebounceFn = setTimeout(() => {
+            fetchMovieBySearch(localInput)
+        }, 500);
+        return()=> clearTimeout(delayDebounceFn)
+    },[localInput, fetchMovieBySearch])
+
+
+    console.log(searchedMovies)
 
     return (
         <>
@@ -32,12 +35,13 @@ export const Navbar = () => {
                         />
                     </Link>
                     <div>
+                        {/* search input */}
                         <input
                             type="text"
                             className="bodrer border p-2 outline-none rounded"
                             placeholder="search..."
-                            // onChange={(e)=>fetchMovieBySearch(e.target.value)}
-                            onChange={handleInputChange}
+                            value={localInput}
+                            onChange={(e)=>setLocalInput(e.target.value)}
                         />
                     </div>
                     <div className="flex gap-8">
